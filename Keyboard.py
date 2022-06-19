@@ -5,12 +5,11 @@ class Keyboard(ttk.Frame):
 
     "The keyboard"
 
-    def __init__(self, container):
-
-        super().__init__(container)
+    def __init__(self, master):
+        super().__init__(master)
 
         letter : str
-        self.container = container
+        self.master = master
 
         # Creates buttons for each letter
         self.letters = {}
@@ -31,4 +30,4 @@ class Keyboard(ttk.Frame):
             self.letters[letter].grid(row=3, column=index, ipadx=6, ipady=10)
     
     def letter_pushed(self, letter):
-        self.container.letter_input(letter)
+        self.master.letter_input(letter)

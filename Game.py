@@ -22,13 +22,15 @@ class Game(tk.Tk):
 
         # keyboard
         self.keyboard = Keyboard(self)
-        self.keyboard.pack(side="bottom")
+        self.keyboard.grid(row=5, rowspan=3, column=0, columnspan=10)
 
         # hangman Tree
         self.tree = Trees(self)
+        self.tree.grid(row=0, rowspan=5, column=5, columnspan=5)
 
         # guessed word so far
         self.word = Word(self)
+        self.word.grid(row=2, rowspan=1, column=1, columnspan=3)
     
     def letter_input(self, char):
         if char in self.word.word_being_guessed:

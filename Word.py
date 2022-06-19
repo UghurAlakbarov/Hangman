@@ -11,10 +11,10 @@ class Word(ttk.Frame):
     
     guessed_word_so_far_label = None
 
-    def __init__(self, container):
+    def __init__(self, master):
+        super().__init__(master)
 
-        super().__init__(container)
-        self.container = container
+        self.master = master
 
         self.create_word()
         self.place_word()
@@ -29,8 +29,8 @@ class Word(ttk.Frame):
     def place_word(self):
         if self.guessed_word_so_far_label is not None:
             self.guessed_word_so_far_label.pack_forget()
-        self.guessed_word_so_far_label = ttk.Label(self.container, text=self.guessed_word_so_far)
-        self.guessed_word_so_far_label.pack(side="left", padx=50)
+        self.guessed_word_so_far_label = ttk.Label(self, text=self.guessed_word_so_far)
+        self.guessed_word_so_far_label.pack()
 
     def add_letters_to_the_word(self, char):
         """ Updates the word with the guessed letters. """
