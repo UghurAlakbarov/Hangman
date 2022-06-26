@@ -33,7 +33,7 @@ class Word(ttk.Frame):
         self.guessed_word_so_far_label.pack()
 
     def add_letters_to_the_word(self, char):
-        """ Updates the word with the guessed letters. """
+        "Updates the word with the guessed letters."
         for index, letter in enumerate(self.word_being_guessed):
             if char == letter:
                 self.guessed_word_so_far[index] = char
