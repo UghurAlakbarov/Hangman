@@ -48,6 +48,8 @@ class Game(tk.Tk):
         if self.attempts_used == 6:
             showinfo(title='Oh no', message=f'You lost :(\nThe word was {self.word.word_being_guessed}')
             self.quit()
+        
+        self.keyboard.focus_set()
 
 if __name__ == "__main__":
     hang = Game()

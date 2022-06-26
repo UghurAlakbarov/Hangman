@@ -1,3 +1,4 @@
+import tkinter as tk
 from tkinter import ttk
 
 
@@ -18,8 +19,10 @@ class Keyboard(ttk.Frame):
                 self,
                 text=f'{letter}',
                 width=6,
-                command=lambda letter=letter : self.letter_pushed(letter)
+                command=lambda letter=letter : self.virtual_keyboard_key_press(letter)
             )
+            self.focus_set()
+            self.bind('<Key>', self.physical_keyboard_key_input)
         
         # Puts buttons in a grid linewise
         for index, letter in enumerate("QWERTYUIOP"):
@@ -29,5 +32,9 @@ class Keyboard(ttk.Frame):
         for index, letter in enumerate("ZXCVBNM"):
             self.letters[letter].grid(row=3, column=index, ipadx=6, ipady=10)
     
-    def letter_pushed(self, letter):
+    def virtual_keyboard_key_press(self, letter):
+        self.master.letter_input(letter)
+    
+    def physical_keyboard_key_input(self, event : tk.Event=None):
+        letter = event.char.upper()
         self.master.letter_input(letter)
