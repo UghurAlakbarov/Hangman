@@ -1,4 +1,5 @@
 import tkinter as tk
+from collections import defaultdict
 from tkinter import ttk
 
 
@@ -13,7 +14,7 @@ class Keyboard(ttk.Frame):
         self.master = master
 
         # Creates buttons for each letter
-        self.letters = {}
+        self.letters = defaultdict(ttk.Button)
         for letter in "QWERTYUIOPASDFGHJKLZXCVBNM":
             self.letters[letter] = ttk.Button(
                 self,
